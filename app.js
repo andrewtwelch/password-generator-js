@@ -13,6 +13,23 @@ function loadPage() {
     }
 }
 
+function validateNumInput() {
+    var words = $("#word-count").val();
+    var digits = $("#trailing-digits").val();
+
+    if (words > 10) {
+        $("#word-count").val(10);
+    } else if (word < 1) {
+        $("#word-count").val(1);
+    }
+
+    if (digits > 10) {
+        $("#trailing-digits").val(10);
+    } else if (word < 1) {
+        $("#trailing-digits").val(1);
+    }
+}
+
 // Returns a random number between min and max (inclusive)
 function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -30,6 +47,7 @@ function getLocalStorage(name) {
 
 // Saves settings to local storage
 function clickSaveSettings() {
+    validateNumInput();
     var words = $("#word-count").val();
     var symbol = $("#symbol").val();
     var digits = $("#trailing-digits").val();
@@ -89,6 +107,7 @@ function generatePassword() {
 }
 
 function generateCustomPassword() {
+    validateNumInput();
     var words = $("#word-count").val();
     var symbol = $("#symbol").val();
     var digits = $("#trailing-digits").val();
