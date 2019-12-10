@@ -19,13 +19,13 @@ function validateNumInput() {
 
     if (words > 10) {
         $("#word-count").val(10);
-    } else if (word < 1) {
+    } else if (words < 1) {
         $("#word-count").val(1);
     }
 
     if (digits > 10) {
         $("#trailing-digits").val(10);
-    } else if (word < 1) {
+    } else if (digits < 1) {
         $("#trailing-digits").val(1);
     }
 }
