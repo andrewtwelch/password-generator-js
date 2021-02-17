@@ -154,11 +154,12 @@ function clickCopy() {
 }
 
 function changeToCustom() {
-    $("#navDefault").removeClass();
+    $("#navDefault").removeClass("active");
+    $("#navAbout").removeClass("active");
     $("#navCustom").addClass("nav-item active");
     var divElement = $("#mainContainer");
-    $("#navCustom").parent().removeClass("active");
-    $("#navDefault").parent().addClass("active");
+    `$("#navCustom").parent().removeClass("active");
+    $("#navDefault").parent().addClass("active");`
     var divElement = $("#mainContainer");
     var row1 = $("<div>").addClass("row");
     var pwDiv = $("<div>").addClass("col-md-12");
@@ -217,7 +218,8 @@ function changeToCustom() {
     var digitsTextDiv = $("<div>").addClass("col-md-2");
     var digitsText = $("<p>").text("Trailing Digits:");
     var digitsInputDiv = $("<div>").addClass("col-md-2 form-group");
-    var digitsInput = $("<input>").prop("id", "trailing-digits").prop("type", "number").prop("min", "1").prop("max", "10").prop("value", "4").addClass("form-control");
+    var digitsInput = $("<input>").prop("id", "trailing-digits").prop("type", "number");
+    digitsInput.prop("min", "1").prop("max", "10").prop("value", "4").addClass("form-control");
 
     digitsTextDiv.append(digitsText);
     digitsInputDiv.append(digitsInput);
@@ -251,7 +253,8 @@ function changeToCustom() {
 }
 
 function changeToDefault() {
-    $("#navCustom").removeClass();
+    $("#navCustom").removeClass("active");
+    $("#navAbout").removeClass("active");
     $("#navDefault").addClass("nav-item active");
     var divElement = $("#mainContainer");
     var row1 = $("<div>").addClass("row");
@@ -274,5 +277,23 @@ function changeToDefault() {
     divElement.append(row1);
     divElement.append($("<br />"));
     divElement.append(row2);
+}
+
+function changeToAbout() {
+    $("#navCustom").removeClass("active");
+    $("#navDefault").removeClass("active");
+    $("#navAbout").addClass("nav-item active");
+    var divElement = $("#mainContainer");
+    var aboutTextContents1 = "Password Generator is developed by Andrew Welch (andrewtwelch on GitHub).";
+    var aboutTextContents2 = "This password generator currently only uses 6 character words, but will soon use a mixture of word lengths,and a more filtered word list to make this more appropriate for use in a professional setting.";
+    var aboutTitle = $("<h3>").addClass("text-center").text("About Password Generator");
+    var aboutBreak = $("<br>");
+    var aboutText1 = $("<p>").addClass("text-center").text(aboutTextContents1);
+    var aboutText2 = $("<p>").addClass("text-center").text(aboutTextContents2);
+    divElement.empty();
+    divElement.append(aboutTitle);
+    divElement.append(aboutBreak);
+    divElement.append(aboutText1);
+    divElement.append(aboutText2);
 }
 
