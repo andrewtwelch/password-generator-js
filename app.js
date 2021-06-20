@@ -6,11 +6,8 @@ function loadPage() {
     var url = new URL(urlString);
     var custom = url.searchParams.get("custom");
 
-    if (custom != null) {
-        changeToCustom();
-    } else {
-        changeToDefault();
-    }
+    changeToPassphrase();
+
 }
 
 function validateNumInput() {
@@ -55,6 +52,9 @@ function clickSaveSettings() {
     saveLocalStorage("words", words);
     saveLocalStorage("symbol", symbol);
     saveLocalStorage("digits", digits);
+    
+    $("#message-field").text("Settings saved!");
+    $("#message-field").css("color", "green");
 }
 
 // Resets settings in local storage to defaults and loads those settings
@@ -66,6 +66,9 @@ function clickResetSettings() {
     saveLocalStorage("words", words);
     saveLocalStorage("symbol", symbol);
     saveLocalStorage("digits", digits);
+    
+    $("#message-field").text("Settings reset!");
+    $("#message-field").css("color", "green");
 
     loadSettings();
 }
@@ -88,25 +91,6 @@ function loadSettings() {
 }
 
 function generatePassword() {
-    var words = 3;
-    var symbol = "";
-    var digits = 4;
-
-    var password = "";
-
-    for (var i = 0; i < words; i++) {
-        password += wordList[random(0, wordList.length)];
-        password += symbol;
-    }
-
-    for (var i = 0; i < digits; i++) {
-        password += random(0,9);
-    }
-
-    return password;
-}
-
-function generateCustomPassword() {
     validateNumInput();
     var words = $("#word-count").val();
     var symbol = $("#symbol").val();
@@ -133,13 +117,6 @@ function clickGenerate() {
     $("#message-field").css("color", "green");
 }
 
-function clickGenerateCustom() {
-    password = generateCustomPassword();
-    $("#password-field").text(password);
-    $("#message-field").text("Password generated!");
-    $("#message-field").css("color", "green");
-}
-
 function clickCopy() {
     password = $("#password-field").text();
     var dummy = document.createElement("input");
@@ -153,7 +130,7 @@ function clickCopy() {
     $("#message-field").css("color", "green");
 }
 
-function changeToCustom() {
+function changeToPassphrase() {
     $("#navDefault").removeClass("active");
     $("#navAbout").removeClass("active");
     $("#navCustom").addClass("nav-item active");
@@ -165,12 +142,12 @@ function changeToCustom() {
     var pwDiv = $("<div>").addClass("col-md-12");
     var pwField = $("<h3>").addClass("text-center").prop("id", "password-field").text("Click Generate!");
     var row2 = $("<div>").addClass("row");
-    var paddingDivRow2 = $("<div>").addClass("col-md-2");
-    var generateButtonDiv = $("<div>").addClass("col-md-2");
-    var copyButtonDiv = $("<div>").addClass("col-md-2");
-    var saveButtonDiv = $("<div>").addClass("col-md-2");
-    var resetButtonDiv = $("<div>").addClass("col-md-2");
-    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerateCustom);
+    var paddingDivRow2 = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var generateButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var copyButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var saveButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var resetButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerate);
     var copyButton = $("<button>").text("Copy").addClass("btn btn-warning btn-block").click(clickCopy);
     var saveButton = $("<button>").text("Save Settings").addClass("btn btn-primary btn-block").click(clickSaveSettings);
     var resetButton = $("<button>").text("Reset Settings").addClass("btn btn-danger btn-block").click(clickResetSettings);
@@ -227,8 +204,6 @@ function changeToCustom() {
     row5.append(digitsTextDiv);
     row5.append(digitsInputDiv);
 
-
-
     divElement.empty();
     generateButtonDiv.append(generateButton);
     copyButtonDiv.append(copyButton);
@@ -250,33 +225,6 @@ function changeToCustom() {
     divElement.append(row5);
 
     loadSettings();
-}
-
-function changeToDefault() {
-    $("#navCustom").removeClass("active");
-    $("#navAbout").removeClass("active");
-    $("#navDefault").addClass("nav-item active");
-    var divElement = $("#mainContainer");
-    var row1 = $("<div>").addClass("row");
-    var pwDiv = $("<div>").addClass("col-md-12");
-    var pwField = $("<h3>").addClass("text-center").prop("id", "password-field").text("Click Generate!");
-    var row2 = $("<div>").addClass("row");
-    var paddingDiv = $("<div>").addClass("col-md-4");
-    var generateButtonDiv = $("<div>").addClass("col-md-2");
-    var copyButtonDiv = $("<div>").addClass("col-md-2");
-    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerate);
-    var copyButton = $("<button>").text("Copy").addClass("btn btn-warning btn-block").click(clickCopy);
-    divElement.empty();
-    generateButtonDiv.append(generateButton);
-    copyButtonDiv.append(copyButton);
-    row2.append(paddingDiv);
-    row2.append(generateButtonDiv);
-    row2.append(copyButtonDiv);
-    pwDiv.append(pwField);
-    row1.append(pwDiv);
-    divElement.append(row1);
-    divElement.append($("<br />"));
-    divElement.append(row2);
 }
 
 function changeToAbout() {
