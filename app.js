@@ -1,16 +1,13 @@
 // List of words in an array
-var wordList = ["Mother","Galaxy","Ballot","Change","Admire","Census","Define","Favour","Policy","Affair","Safety","Layout","Timber","Rescue","Buffet","Prison","Immune","Doctor","Ground","Sermon","Afford","Dinner","Velvet","Camera","Marble","Safari","Candle","Barrel","Church","Sleeve","Scheme","Relief","Critic","Modest","Active","Planet","Wonder","Growth","Senior","Depart","Symbol","Porter","Option","System","Future","Spirit","Rhythm","Tumour","Sodium","Harass","Slogan","Friend","Formal","Belief","Prince","Expose","Estate","Detail","Series","Subway","Topple","Acquit","Meadow","Ticket","Writer","Garlic","Viable","Office","Person","Remark","Damage","Middle","Forbid","Happen","Embark","Gossip","Colony","Dollar","Exceed","Corner","Canvas","Common","Kettle","Weight","Vessel","Nature","Winner","Insure","Defend","Resign","Bucket","Thanks","Runner","Europe","Extend","Cellar","Glance","Corpse","Clique","Temple","Carpet","Dilute","Mobile","Return","Accept","Remedy","Garage","Banana","Voyage","Resort","Coffee","Harbor","Agenda","Lounge","Supply","Visual","Length","Embryo","Ignite","Punish","Labour","Prayer","Clinic","Sample","Parade","Morsel","Redeem","Export","Adjust","Needle","Worker","Stitch","Patent","Pocket","Scrape","Member","Stream","Thread","Quaint","Behead","Cherry","Flavor","Affect","Bounce","Degree","Breast","Employ","Mosaic","Mutual","Cancel","Switch","Expand","Poison","Listen","Matter","Heroin","Record","Reveal","Reform","Linger","Retain","Grudge","Chance","Praise","Tender","Powder","Drawer","Outlet","Exotic","Salmon","Secure","Throne","Pledge","Margin","Earwax","Empire","Sticky","Absorb","Debate","Filter","Normal","Tablet","Height","Extent","Gravel","Window","Social","Sunday","Bubble","Inside","Revoke","Choose","Injury","Castle","Gallon","Extort","Launch","Expect","Prefer","Heaven","Excuse","Latest","Makeup","Reduce","Frozen","Crouch","Single","Rocket","Origin","Freeze","Script","Lesson","Jungle","Crisis","Import","Appeal","Effect","Fossil","Comedy","Moment","Chorus","Design","Season","Island","Narrow","Bridge","Offend","Bottle","Absent","Bronze","Border","Excess","Method","Apathy","Honest","Museum","Legend","Thesis","Decade","Output","Squash","Scream","Speech","Guitar","Period","Thrust","Circle","Assume","Ritual","Global","Palace","Lonely","Attack","Tiptoe","Spring","Linear","Outfit","Sacred","Tactic","Aspect","Kidnap","Figure","Breeze","Finger","Cousin","Create","Suburb","Driver","Bundle","Cotton","Agency","Arrest","Remind","Mosque","Theory","Virgin","Button","Flower","Winter","Deport","Deputy","Packet","Locate","Profit","Resist","Lawyer","Burial","Letter","Cheese","Murder","Banish","Energy","Object","Remain","Denial","Closed","Cheque","Suntan","Bloody","Avenue","Offset","Desert","Ballet","Escape","Branch","Cereal","Wander","Pardon","Appear","Retire","Refund","Unrest","Delete","Bullet","Direct","Manual","Career","Result","Rotate","Copper","Efflux","Broken","Carbon","Mirror","Animal","Bottom","Summer","Stress","Ignore","Ensure","Weapon","Finish","Stroke","Throat","Stride","Preach","Course","Basket","Engine","Matrix","Asylum","Leader","Jacket","Differ","Reason","Virtue","Coffin","Useful","Depend","Horror","Notion","Ethics","Waiter","Shiver","Mature","Junior","Insert","Regard","Collar","Rabbit","Sister","Spread","Cancer","Studio","Shower","Devote","Snatch","Suffer","Killer","Annual","Random","Review","Sector","Tongue","Memory","Elapse","Couple","Tumble","Patrol","Exempt","Hunter","Accent","Banner","Defeat","Square","Forget","Master","Monkey","Bomber","Shadow","String","Infect","Mutter","Poetry","Repeat","Strong","Gutter","Jockey","Action","Advice","Stable","Strain","Invite","Peanut","Inject","Forest","Sketch","Bishop","Hiccup","Father","Player","Reject","Trance","Pierce","Muscle","Strike","Racism","Valley","Flight","Indoor","Impact","Manage","Family","Dealer","Carrot","Survey","Sphere","Number","Threat","Tissue","Update","Silver","Oppose","Blonde","Charge","Moving","Decide","Rotten","Proper","Betray","Report","Hammer","Market","Morale","Unique","Crutch","Health","Behave","Flawed","Helmet","Instal","Nuance","Spider","Sailor","Hotdog","Effort","Double","Choice","Settle","Tenant","Module","Desire","Access","Volume","Minute","Refuse","Summit","Insist","Marine","Manner","Endure","Relate","Foster","Ethnic","Answer","Native","Pigeon","Shorts","Pillow","Center","Shrink","Smooth","Seller","Vision","Misery","Bitter","Unlike","Revive","Deadly","Revise","Format","Dragon","Ribbon","Battle","Coerce","Ladder","Occupy","Bother","Pastel","Twitch","Source","Wealth","Likely","Regret","Artist","Trench","Medium","Public","Demand","Strict","Kidney","Factor","Credit","Cattle","Reader","Reward","Pepper","Column","Screen","Turkey","Danger","Treaty","Vacuum","Polish","Stroll","Please","Second","Orange","Tycoon","Belong","Borrow","School","Follow","Notice","Budget","Singer","Facade","Divide","Unfair","Polite","Cinema"]
+var wordList = ["Mother","Galaxy","Ballot","Change","Admire","Census","Define","Favour","Policy","Safety","Layout","Timber","Rescue","Buffet","Prison","Immune","Doctor","Ground","Afford","Dinner","Velvet","Camera","Marble","Safari","Candle","Barrel","Church","Sleeve","Scheme","Relief","Critic","Modest","Active","Planet","Wonder","Growth","Senior","Depart","Symbol","Porter","Option","System","Future","Spirit","Rhythm","Harass","Slogan","Friend","Formal","Belief","Prince","Expose","Estate","Detail","Series","Subway","Topple","Acquit","Meadow","Ticket","Writer","Garlic","Viable","Office","Person","Remark","Damage","Middle","Forbid","Happen","Embark","Gossip","Colony","Dollar","Exceed","Corner","Canvas","Common","Kettle","Weight","Vessel","Nature","Winner","Insure","Defend","Resign","Bucket","Runner","Extend","Cellar","Glance","Clique","Temple","Carpet","Dilute","Mobile","Return","Accept","Remedy","Garage","Banana","Voyage","Resort","Coffee","Harbor","Agenda","Lounge","Supply","Visual","Length","Ignite","Punish","Labour","Clinic","Sample","Parade","Redeem","Export","Adjust","Needle","Worker","Stitch","Patent","Pocket","Scrape","Member","Stream","Thread","Cherry","Flavor","Affect","Bounce","Degree","Employ","Mosaic","Mutual","Cancel","Switch","Expand","Poison","Listen","Matter","Record","Reveal","Reform","Linger","Retain","Grudge","Chance","Praise","Tender","Powder","Drawer","Outlet","Exotic","Secure","Throne","Pledge","Margin","Empire","Sticky","Absorb","Debate","Filter","Normal","Tablet","Height","Extent","Gravel","Window","Social","Sunday","Bubble","Inside","Revoke","Choose","Injury","Castle","Gallon","Extort","Launch","Expect","Prefer","Heaven","Excuse","Latest","Makeup","Reduce","Frozen","Crouch","Single","Rocket","Origin","Freeze","Script","Lesson","Jungle","Crisis","Import","Appeal","Effect","Fossil","Comedy","Moment","Chorus","Design","Season","Island","Narrow","Bridge","Offend","Bottle","Absent","Bronze","Border","Excess","Method","Apathy","Honest","Museum","Legend","Thesis","Decade","Output","Squash","Scream","Speech","Guitar","Period","Circle","Assume","Ritual","Global","Palace","Lonely","Attack","Tiptoe","Spring","Linear","Outfit","Sacred","Tactic","Aspect","Figure","Breeze","Finger","Cousin","Create","Suburb","Driver","Bundle","Cotton","Agency","Arrest","Remind","Theory","Button","Flower","Winter","Deputy","Packet","Locate","Profit","Resist","Burial","Letter","Cheese","Banish","Energy","Object","Remain","Denial","Closed","Avenue","Offset","Desert","Ballet","Escape","Branch","Cereal","Wander","Pardon","Appear","Retire","Refund","Unrest","Delete","Direct","Manual","Career","Result","Rotate","Copper","Broken","Carbon","Mirror","Animal","Bottom","Summer","Stress","Ignore","Ensure","Weapon","Finish","Stroke","Throat","Stride","Preach","Course","Basket","Engine","Matrix","Leader","Jacket","Differ","Reason","Virtue","Coffin","Useful","Depend","Horror","Notion","Ethics","Waiter","Shiver","Mature","Junior","Insert","Regard","Collar","Rabbit","Sister","Spread","Studio","Shower","Devote","Snatch","Suffer","Killer","Annual","Random","Review","Sector","Tongue","Memory","Elapse","Couple","Tumble","Patrol","Exempt","Hunter","Accent","Banner","Defeat","Square","Forget","Master","Monkey","Bomber","Shadow","String","Infect","Mutter","Poetry","Repeat","Strong","Gutter","Jockey","Action","Advice","Stable","Strain","Invite","Peanut","Inject","Forest","Sketch","Bishop","Hiccup","Father","Player","Reject","Trance","Pierce","Muscle","Strike","Racism","Valley","Flight","Indoor","Impact","Manage","Family","Dealer","Carrot","Survey","Sphere","Number","Threat","Tissue","Update","Silver","Oppose","Blonde","Charge","Moving","Decide","Rotten","Proper","Betray","Report","Hammer","Market","Morale","Unique","Crutch","Health","Behave","Flawed","Helmet","Nuance","Spider","Sailor","Hotdog","Effort","Double","Choice","Settle","Tenant","Module","Desire","Access","Volume","Minute","Refuse","Summit","Insist","Marine","Manner","Endure","Relate","Foster","Answer","Native","Pigeon","Shorts","Pillow","Center","Shrink","Smooth","Seller","Vision","Misery","Bitter","Unlike","Revive","Deadly","Revise","Format","Dragon","Ribbon","Battle","Coerce","Ladder","Occupy","Bother","Pastel","Twitch","Source","Wealth","Likely","Regret","Artist","Trench","Medium","Public","Demand","Strict","Kidney","Factor","Credit","Cattle","Reader","Reward","Pepper","Column","Screen","Turkey","Danger","Treaty","Vacuum","Polish","Stroll","Please","Second","Orange","Tycoon","Belong","Borrow","School","Follow","Notice","Budget","Singer","Facade","Divide","Unfair","Polite","Cinema"]
 
 function loadPage() {
     var urlString = window.location.href;
     var url = new URL(urlString);
     var custom = url.searchParams.get("custom");
 
-    if (custom != null) {
-        changeToCustom();
-    } else {
-        changeToDefault();
-    }
+    changeToPassphrase();
+
 }
 
 function validateNumInput() {
@@ -55,6 +52,9 @@ function clickSaveSettings() {
     saveLocalStorage("words", words);
     saveLocalStorage("symbol", symbol);
     saveLocalStorage("digits", digits);
+    
+    $("#message-field").text("Settings saved!");
+    $("#message-field").css("color", "green");
 }
 
 // Resets settings in local storage to defaults and loads those settings
@@ -66,6 +66,9 @@ function clickResetSettings() {
     saveLocalStorage("words", words);
     saveLocalStorage("symbol", symbol);
     saveLocalStorage("digits", digits);
+    
+    $("#message-field").text("Settings reset!");
+    $("#message-field").css("color", "green");
 
     loadSettings();
 }
@@ -88,25 +91,6 @@ function loadSettings() {
 }
 
 function generatePassword() {
-    var words = 3;
-    var symbol = "";
-    var digits = 4;
-
-    var password = "";
-
-    for (var i = 0; i < words; i++) {
-        password += wordList[random(0, wordList.length)];
-        password += symbol;
-    }
-
-    for (var i = 0; i < digits; i++) {
-        password += random(0,9);
-    }
-
-    return password;
-}
-
-function generateCustomPassword() {
     validateNumInput();
     var words = $("#word-count").val();
     var symbol = $("#symbol").val();
@@ -133,13 +117,6 @@ function clickGenerate() {
     $("#message-field").css("color", "green");
 }
 
-function clickGenerateCustom() {
-    password = generateCustomPassword();
-    $("#password-field").text(password);
-    $("#message-field").text("Password generated!");
-    $("#message-field").css("color", "green");
-}
-
 function clickCopy() {
     password = $("#password-field").text();
     var dummy = document.createElement("input");
@@ -153,7 +130,7 @@ function clickCopy() {
     $("#message-field").css("color", "green");
 }
 
-function changeToCustom() {
+function changeToPassphrase() {
     $("#navDefault").removeClass("active");
     $("#navAbout").removeClass("active");
     $("#navCustom").addClass("nav-item active");
@@ -165,12 +142,12 @@ function changeToCustom() {
     var pwDiv = $("<div>").addClass("col-md-12");
     var pwField = $("<h3>").addClass("text-center").prop("id", "password-field").text("Click Generate!");
     var row2 = $("<div>").addClass("row");
-    var paddingDivRow2 = $("<div>").addClass("col-md-2");
-    var generateButtonDiv = $("<div>").addClass("col-md-2");
-    var copyButtonDiv = $("<div>").addClass("col-md-2");
-    var saveButtonDiv = $("<div>").addClass("col-md-2");
-    var resetButtonDiv = $("<div>").addClass("col-md-2");
-    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerateCustom);
+    var paddingDivRow2 = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var generateButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var copyButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var saveButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var resetButtonDiv = $("<div>").addClass("col-md-2").addClass("col-sm-12");
+    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerate);
     var copyButton = $("<button>").text("Copy").addClass("btn btn-warning btn-block").click(clickCopy);
     var saveButton = $("<button>").text("Save Settings").addClass("btn btn-primary btn-block").click(clickSaveSettings);
     var resetButton = $("<button>").text("Reset Settings").addClass("btn btn-danger btn-block").click(clickResetSettings);
@@ -227,8 +204,6 @@ function changeToCustom() {
     row5.append(digitsTextDiv);
     row5.append(digitsInputDiv);
 
-
-
     divElement.empty();
     generateButtonDiv.append(generateButton);
     copyButtonDiv.append(copyButton);
@@ -250,33 +225,6 @@ function changeToCustom() {
     divElement.append(row5);
 
     loadSettings();
-}
-
-function changeToDefault() {
-    $("#navCustom").removeClass("active");
-    $("#navAbout").removeClass("active");
-    $("#navDefault").addClass("nav-item active");
-    var divElement = $("#mainContainer");
-    var row1 = $("<div>").addClass("row");
-    var pwDiv = $("<div>").addClass("col-md-12");
-    var pwField = $("<h3>").addClass("text-center").prop("id", "password-field").text("Click Generate!");
-    var row2 = $("<div>").addClass("row");
-    var paddingDiv = $("<div>").addClass("col-md-4");
-    var generateButtonDiv = $("<div>").addClass("col-md-2");
-    var copyButtonDiv = $("<div>").addClass("col-md-2");
-    var generateButton = $("<button>").text("Generate").addClass("btn btn-success btn-block").click(clickGenerate);
-    var copyButton = $("<button>").text("Copy").addClass("btn btn-warning btn-block").click(clickCopy);
-    divElement.empty();
-    generateButtonDiv.append(generateButton);
-    copyButtonDiv.append(copyButton);
-    row2.append(paddingDiv);
-    row2.append(generateButtonDiv);
-    row2.append(copyButtonDiv);
-    pwDiv.append(pwField);
-    row1.append(pwDiv);
-    divElement.append(row1);
-    divElement.append($("<br />"));
-    divElement.append(row2);
 }
 
 function changeToAbout() {
