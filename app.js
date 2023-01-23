@@ -258,15 +258,41 @@ function clickGenerateWord() {
 
 function clickCopy() {
     password = $("#password-field").text();
-    var dummy = document.createElement("input");
-    document.body.appendChild(dummy);
-    dummy.setAttribute("id", "dummy_id");
-    document.getElementById("dummy_id").value = password;
-    dummy.select();
-    document.execCommand("copy");
-    document.body.removeChild(dummy);
+    navigator.clipboard.writeText(password);
     $("#message-field").text("Password copied!");
     $("#message-field").css("color", "green");
+}
+
+function clickPasswordPusher() {
+    password = $("#password-field").text();
+    pushPayload = {
+        "password": {
+            "payload": password,
+            "expire_after_days": "5",
+            "expire_after_views": "2",
+            "retrieval_step": "true",
+            "deletable_by_viewer": "true"
+        }
+    }
+    $.ajax({
+        type: "POST",
+        url: "https://pwpush.com/p.json",
+        data: JSON.stringify(pushPayload),
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
+            urlToken = result["url_token"];
+            url = "https://pwpush.com/en/p/" + urlToken + "/r"
+            console.log(url);
+            navigator.clipboard.writeText(url);
+            $("#message-field").text("Password Pusher URL copied!");
+            $("#message-field").css("color", "green");          
+        },
+        error: function () {
+            $("#message-field").text("Password Pusher failed!");
+            $("#message-field").css("color", "red");
+        }
+    });
 }
 
 function getCrackLength(password) {
