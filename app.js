@@ -228,12 +228,14 @@ function generatePassword() {
     }
     if (wordnumber == true) {
         characters = characters.concat(numberList);
+        characters = characters.concat(numberList);
     }
     if (wordsymbol == true) {
         characters = characters.concat(symbolList);
+        characters = characters.concat(symbolList);
     }
 
-    for (var i = 0; i < wordlength; i++) {
+        for (var i = 0; i < wordlength; i++) {
         password += characters[random(0, characters.length)];
     }
 
