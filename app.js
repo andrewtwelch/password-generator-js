@@ -5,14 +5,6 @@ var lowerList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var numberList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var symbolList = ["!", "@", "#", "$", "%", "^", "&", "*", '?'];
 
-function loadPage() {
-    var urlString = window.location.href;
-    var url = new URL(urlString);
-    var custom = url.searchParams.get("custom");
-
-    changeToPassphrase();
-
-}
 
 function validateNumInput() {
     var words = $("#word-count").val();
@@ -36,16 +28,6 @@ function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-// Saves a value to local storage
-function saveLocalStorage(name, value) {
-    localStorage.setItem(name, value);
-}
-
-// Retrieves a value from local storage
-function getLocalStorage(name) {
-    return localStorage.getItem(name);
-}
-
 // Saves settings to local storage
 function clickSavePhraseSettings() {
     validateNumInput();
@@ -53,9 +35,9 @@ function clickSavePhraseSettings() {
     var symbol = $("#symbol").val();
     var digits = $("#trailing-digits").val();
 
-    saveLocalStorage("words", words);
-    saveLocalStorage("symbol", symbol);
-    saveLocalStorage("digits", digits);
+    localStorage.setItem("words", words);
+    localStorage.setItem("symbol", symbol);
+    localStorage.setItem("digits", digits);
 
     $("#message-field").text("Settings saved!");
     $("#message-field").css("color", "green");
@@ -68,11 +50,11 @@ function clickSaveWordSettings() {
     var wordnumber = $("#word-number").prop("checked");
     var wordsymbol = $("#word-symbol").prop("checked");
 
-    saveLocalStorage("word-length", wordlength);
-    saveLocalStorage("word-upper", wordupper);
-    saveLocalStorage("word-lower", wordlower);
-    saveLocalStorage("word-number", wordnumber);
-    saveLocalStorage("word-symbol", wordsymbol);
+    localStorage.setItem("word-length", wordlength);
+    localStorage.setItem("word-upper", wordupper);
+    localStorage.setItem("word-lower", wordlower);
+    localStorage.setItem("word-number", wordnumber);
+    localStorage.setItem("word-symbol", wordsymbol);
 
     $("#message-field").text("Settings saved!");
     $("#message-field").css("color", "green");
@@ -85,11 +67,11 @@ function clickResetWordSettings() {
     var wordnumber = true;
     var wordsymbol = true;
 
-    saveLocalStorage("word-length", wordlength);
-    saveLocalStorage("word-upper", wordupper);
-    saveLocalStorage("word-lower", wordlower);
-    saveLocalStorage("word-number", wordnumber);
-    saveLocalStorage("word-symbol", wordsymbol);
+    localStorage.setItem("word-length", wordlength);
+    localStorage.setItem("word-upper", wordupper);
+    localStorage.setItem("word-lower", wordlower);
+    localStorage.setItem("word-number", wordnumber);
+    localStorage.setItem("word-symbol", wordsymbol);
 
     $("#message-field").text("Settings saved!");
     $("#message-field").css("color", "green");
@@ -103,9 +85,9 @@ function clickResetPhraseSettings() {
     var symbol = "";
     var digits = 4;
 
-    saveLocalStorage("words", words);
-    saveLocalStorage("symbol", symbol);
-    saveLocalStorage("digits", digits);
+    localStorage.setItem("words", words);
+    localStorage.setItem("symbol", symbol);
+    localStorage.setItem("digits", digits);
 
     $("#message-field").text("Settings reset!");
     $("#message-field").css("color", "green");
@@ -115,9 +97,9 @@ function clickResetPhraseSettings() {
 
 // If settings exist in local storage, loads them
 function loadPhraseSettings() {
-    var words = getLocalStorage("words");
-    var symbol = getLocalStorage("symbol");
-    var digits = getLocalStorage("digits");
+    var words = localStorage.getItem("words");
+    var symbol = localStorage.getItem("symbol");
+    var digits = localStorage.getItem("digits");
 
     if (words != null) {
         $("#word-count").val(words);
@@ -137,11 +119,11 @@ function loadPhraseSettings() {
 }
 
 function loadWordSettings() {
-    var wordlength = getLocalStorage("word-length");
-    var wordupper = getLocalStorage("word-upper");
-    var wordlower = getLocalStorage("word-lower");
-    var wordnumber = getLocalStorage("word-number");
-    var wordsymbol = getLocalStorage("word-symbol");
+    var wordlength = localStorage.getItem("word-length");
+    var wordupper = localStorage.getItem("word-upper");
+    var wordlower = localStorage.getItem("word-lower");
+    var wordnumber = localStorage.getItem("word-number");
+    var wordsymbol = localStorage.getItem("word-symbol");
 
     if (wordlength != null) {
         $("#word-length").val(wordlength);
