@@ -5,101 +5,98 @@
     <title>Password Generator - Passphrase</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html">Password Generator</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li id="navPassphrase" class="nav-item">
-                        <a class="nav-link active" href="/index.html">Passphrase</a>
-                    </li>
-                    <li id="navPassword" class="nav-item">
-                        <a class="nav-link" href="/password.html">Password</a>
-                    </li>
-                    <li id="navAbout" class="nav-item">
-                        <a class="nav-link" href="/about.html">About</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-right">
-                    <li id="message-field"></li>
-                </ul>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <p class="navbar-item"><strong>Password Generator</strong></p>
+        </div>
+        <div class="navbar-menu" id="navbarLinks">
+            <div class="navbar-start">
+                <a id="settings-button" class="navbar-item" href="#">Settings</a>
+                <a id="about-button" class="navbar-item" href="#">About</a>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <p id="status-text" class="navbar-item has-text-primary-30 is-size-7"></p>
             </div>
         </div>
     </nav>
-    <br />
-    <div class="container" id="mainContainer">
-        <div class="row">
-            <div class="col-md-12" style="margin-top: 0.25em">
-                <h3 class="text-center" id="password-field">Click Generate!</h3>
-            </div>
-            <div class="col-md-12">
-                <h6 class="text-center" style="color: grey; min-height: 1.25em;" id="crack-field"></h3>
-            </div>
-        </div><br>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"><button class="btn btn-success btn-block" onclick="clickGeneratePhrase()">Generate</button></div>
-            <div class="col-md-2"><button class="btn btn-warning btn-block" onclick="clickCopy()">Copy Password</button></div>
-            <div class="col-md-2"><button class="btn btn-info btn-block" onclick="clickPasswordPusher()">Copy PWPush</button></div>
-            <div class="col-md-2"><button class="btn btn-primary btn-block" onclick="clickSavePhraseSettings()">Save Settings</button></div>
-            <div class="col-md-2"><button class="btn btn-danger btn-block" onclick="clickResetPhraseSettings()">Reset Settings</button></div>
-        </div><br>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-2">
-                <p>Words:</p>
-            </div>
-            <div class="col-md-2 form-group"><input id="word-count" type="number" min="1" max="10" class="form-control">
+    <br>
+    <div class="container is-widescreen">
+        <br>
+        <div class="grid">
+            <div class="cell">
+                <h3 class="title is-3 has-text-centered has-text-weight-normal" id="password-field">Click Generate!</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-2">
-                <p>Symbol:</p>
+        <div class="grid">
+            <div class="cell">
+                <h6 class="title is-6 has-text-centered has-text-weight-normal" id="crack-field"></h6>
             </div>
-            <div class="col-md-2 form-group"><select id="symbol" class="form-control">
-                    <option value="">None</option>
-                    <option value="-">Dash (-)</option>
-                    <option value="*">Star (*)</option>
-                    <option value="/">Slash (/)</option>
-                    <option value=".">Dot (.)</option>
-                </select></div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-2">
-                <p>Trailing Digits:</p>
+        <br>
+        <div class="buttons is-centered">
+            <button type="button" id="generate-password" class="button is-success is-centered">Get Password</button>
+            <button type="button" id="generate-passphrase" class="button is-success is-centered">Get Passphrase</button>
+            <button type="button" id="copy-clipboard" class="button is-info is-centered">Copy</button>
+            <button type="button" id="copy-pwpush" class="button is-info is-centered">Copy PWPush</button>
+        </div>
+    </div>
+
+    <div id="about-modal" class="modal">
+        <div class="modal-content has-text-centered">
+            <h3 class="title is-3 has-text-weight-normal">password-generator-js</h3>
+            <p>A simple, client side password and passphrase generator.</p>
+            <br>
+            <p>Built with just HTML, CSS and JavaScript.</p>
+            <br>
+            <a href="https://github.com/andrewtwelch/password-generator-js" target="_blank" id="github-link" class="button is-info">GitHub</a>
+            <button type="button" id="about-close" class="button is-primary">Close</button>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content has-text-centered">
+            <h3 class="title is-3 has-text-weight-normal">Settings</h3>
+            <div class="field">
+                <label class="label">Password Length</label>
+                <div class="field">
+                    <input id="password-length" type="number" min="8" max="128" class="input modal-text-input">
+                </div>
             </div>
-            <div class="col-md-2 form-group"><input id="trailing-digits" type="number" min="1" max="10"
-                    class="form-control"></div>
+            <div class="field">
+                <label class="label">Include Symbols in Password</label>
+                <div class="field">
+                    <button id="password-symbols" type="button" class="button is-light is-success">Yes</button>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Passphrase Length</label>
+                <div class="field">
+                    <input id="passphrase-length" type="number" min="8" max="128" class="input modal-text-input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Include Symbols and Numbers in Passphrase</label>
+                <div class="field">
+                    <button id="passphrase-separator" type="button" class="button is-light is-success">Yes</button>
+                </div>
+            </div>
+            <br>
+            <button type="button" id="reset-settings" class="button is-danger">Reset Settings</button>
+            <button type="button" id="settings-close" class="button is-primary">Close</button>
         </div>
     </div>
 
     <script src="app.js"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
-        integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA="
-        crossorigin="anonymous"></script>
-    <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script>
-        console.log("Check out the source code at https://github.com/andrewtwelch/password-generator-js");
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.min.js"></script>
 </body>
-
 </html>
