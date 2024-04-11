@@ -12,6 +12,8 @@ let passwordLengthField = document.getElementById("password-length");
 let passwordSymbolsButton = document.getElementById("password-symbols");
 let passphraseLengthField = document.getElementById("passphrase-length");
 let passphraseSeparatorButton = document.getElementById("passphrase-separator");
+let pwPushExpireDaysField = document.getElementById('pwpush-expire-days');
+let pwPushExpireViewsField = document.getElementById('pwpush-expire-views');
 let generatePasswordButton = document.getElementById("generate-password");
 let generatePassphraseButton = document.getElementById("generate-passphrase");
 let copyClipboardButton = document.getElementById("copy-clipboard");
@@ -23,6 +25,7 @@ let settingsCloseButton = document.getElementById("settings-close");
 let aboutButton = document.getElementById("about-button");
 let aboutModal = document.getElementById("about-modal");
 let aboutCloseButton = document.getElementById("about-close");
+let settings;
 
 // Returns a random number between min and max (inclusive)
 function random(min, max) {
@@ -34,56 +37,66 @@ function copyToClipboard() {
     statusText.innerText = "Copied to clipboard";
 }
 
-function initialisePage() {
-    if (!localStorage.getItem("settingsExist")) {
-        setDefaultSettings();
-    }
-    passwordLengthField.value = localStorage.getItem("passwordLength").toString();
-    if (localStorage.getItem("passwordSymbols") === "false") {
-        passwordSymbolsButton.classList.toggle("is-success");
-        passwordSymbolsButton.classList.toggle("is-danger");
+function updateSettingsModal() {
+    passwordLengthField.value = settings.passwordLength.toString();
+    passphraseLengthField.value = settings.passphraseLength.toString();
+    pwPushExpireDaysField.value = settings.pwPushExpireDays.toString();
+    pwPushExpireViewsField.value = settings.pwPushExpireViews.toString();
+    if (settings.passwordSymbols) {
+        passwordSymbolsButton.classList.add("is-success");
+        passwordSymbolsButton.classList.remove("is-danger");
+        passwordSymbolsButton.innerText = "Yes";
+    } else {
+        passwordSymbolsButton.classList.remove("is-success");
+        passwordSymbolsButton.classList.add("is-danger");
         passwordSymbolsButton.innerText = "No";
     };
-    passphraseLengthField.value = localStorage.getItem("passphraseLength").toString();
-    if (localStorage.getItem("passphraseSeparators") === "false") {
-        passphraseSeparatorButton.classList.toggle("is-success");
-        passphraseSeparatorButton.classList.toggle("is-danger");
+    if (settings.passphraseSeparators) {
+        passphraseSeparatorButton.classList.add("is-success");
+        passphraseSeparatorButton.classList.remove("is-danger");
+        passphraseSeparatorButton.innerText = "Yes";
+    } else {
+        passphraseSeparatorButton.classList.remove("is-success");
+        passphraseSeparatorButton.classList.add("is-danger");
         passphraseSeparatorButton.innerText = "No";
     };
 }
 
+function loadSettings() {
+    if ((localStorage.getItem("settingsExist")) || (!localStorage.getItem("settings"))) {
+        let tempSettings = {
+            passwordLength: parseInt(localStorage.getItem("passwordLength")) || 16,
+            passwordSymbols: (localStorage.getItem("passwordSymbols") === "true") || true,
+            passphraseLength: parseInt(localStorage.getItem("passphraseLength")) || 24,
+            passphraseSeparators: (localStorage.getItem("passphraseSeparators") === "true") || true,
+            pwPushExpireDays: 5,
+            pwPushExpireViews: 2
+        };
+        localStorage.clear();
+        localStorage.setItem("settings", JSON.stringify(tempSettings));
+    }
+    settings = JSON.parse(localStorage.getItem("settings"));
+    updateSettingsModal();
+}
+
 function setDefaultSettings() {
-    localStorage.clear()
-    localStorage.setItem("settingsExist",true);
-    localStorage.setItem("passwordLength",16);
-    localStorage.setItem("passwordSymbols",true);
-    localStorage.setItem("passphraseLength",24);
-    localStorage.setItem("passphraseSeparators",true);
-    passwordLengthField.value = 16;
-    passwordSymbolsButton.classList.add("is-success");
-    passwordSymbolsButton.classList.remove("is-danger");
-    passwordSymbolsButton.innerText = "Yes";
-    passphraseLengthField.value = 24;
-    passphraseSeparatorButton.classList.add("is-success");
-    passphraseSeparatorButton.classList.remove("is-danger");
-    passphraseSeparatorButton.innerText = "Yes";
+    localStorage.clear();
+    loadSettings();
 }
 
 function setUsedSettings() {
-    localStorage.setItem("settingsExist",true);
-    localStorage.setItem("passwordLength", parseInt(passwordLengthField.value));
-    localStorage.setItem("passwordSymbols", (passwordSymbolsButton.innerText === "Yes"));
-    localStorage.setItem("passphraseLength", parseInt(passphraseLengthField.value));
-    localStorage.setItem("passphraseSeparators", (passphraseSeparatorButton.innerText === "Yes"));
+    localStorage.setItem("settings", JSON.stringify(settings));
+    updateSettingsModal();
 }
 
 function generatePassphrase() {
+    loadSettings();
     let passphrase = "";
     let separatorList = [...numberList, ...symbolList];
-    let ppLength = parseInt(localStorage.getItem("passphraseLength"));
+    let ppLength = settings.passphraseLength;
     while (passphrase.length < ppLength) {
         passphrase += wordList[random(0, wordList.length)];
-        if (localStorage.getItem("passphraseSeparators") === "true" && passphrase.length < ppLength) {
+        if (settings.passphraseSeparators && passphrase.length < ppLength) {
             passphrase += separatorList[random(0, separatorList.length)];
         }
     }
@@ -94,10 +107,11 @@ function generatePassphrase() {
 }
 
 function generatePassword() {
+    loadSettings();
     let characters = [...upperList, ...lowerList, ...numberList];
     let password = "";
-    let pwLength = parseInt(localStorage.getItem("passwordLength"));
-    if (localStorage.getItem("passwordSymbols") === "true") {
+    let pwLength = settings.passwordLength;
+    if (settings.passwordSymbols) {
         characters = [...characters, ...symbolList];
     }
     for (let i = 0; i < pwLength; i++) {
@@ -110,11 +124,12 @@ function generatePassword() {
 }
 
 async function postPwPush(password) {
+    loadSettings();
     let payload = {
         password: {
             payload: password,
-            expire_after_days: 5,
-            expire_after_views: 2,
+            expire_after_days: settings.pwPushExpireDays,
+            expire_after_views: settings.pwPushExpireViews,
             retrieval_step: true,
             deletable_by_viewer: true
         }
@@ -138,27 +153,29 @@ function pushPassword() {
     })
 }
 
-initialisePage();
-passwordLengthField.addEventListener("change", setUsedSettings);
-passwordSymbolsButton.addEventListener("click", () => {
-    passwordSymbolsButton.classList.toggle("is-success");
-    passwordSymbolsButton.classList.toggle("is-danger");
-    if (passwordSymbolsButton.innerText === "Yes"){
-        passwordSymbolsButton.innerText = "No";
-    } else {
-        passwordSymbolsButton.innerText = "Yes";
-    }
+loadSettings();
+passwordLengthField.addEventListener("change", () => {
+    settings.passwordLength = parseInt(passwordLengthField.value);
     setUsedSettings();
 });
-passphraseLengthField.addEventListener("change", setUsedSettings);
+passwordSymbolsButton.addEventListener("click", () => {
+    settings.passwordSymbols = !settings.passwordSymbols;
+    setUsedSettings();
+});
+passphraseLengthField.addEventListener("change", () => {
+    settings.passphraseLength = parseInt(passphraseLengthField.value);
+    setUsedSettings();
+});
 passphraseSeparatorButton.addEventListener("click", () => {
-    passphraseSeparatorButton.classList.toggle("is-success");
-    passphraseSeparatorButton.classList.toggle("is-danger");
-    if (passphraseSeparatorButton.innerText === "Yes"){
-        passphraseSeparatorButton.innerText = "No";
-    } else {
-        passphraseSeparatorButton.innerText = "Yes";
-    }
+    settings.passphraseSeparators = !settings.passphraseSeparators;
+    setUsedSettings();
+});
+pwPushExpireDaysField.addEventListener("change", () => {
+    settings.pwPushExpireDays = parseInt(pwPushExpireDaysField.value);
+    setUsedSettings();
+});
+pwPushExpireViewsField.addEventListener("change", () => {
+    settings.pwPushExpireViews = parseInt(pwPushExpireViewsField.value);
     setUsedSettings();
 });
 generatePasswordButton.addEventListener("click", generatePassword);
